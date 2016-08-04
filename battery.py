@@ -27,10 +27,25 @@ else:
     fulltext = ""
     timeleft = ""
 
+    quartile = int(round(float(percentleft) / 25.0))
+
+    if quartile == 4:
+        BATCODE = "\uf240"
+    elif quartile == 3:
+        BATCODE = "\uf241"
+    elif quartile == 2:
+        BATCODE = "\uf242"
+    elif quartile == 1:
+        BATCODE = "\uf243"
+    else:
+        BATCODE = "\uf244"
+    FA_BATTERY = "<span font='FontAwesome'>{}</span>".format(BATCODE)
+
     if state == "Discharging":
         time = commasplitstatus[-1].split()[0]
         time = ":".join(time.split(":")[0:2])
         timeleft = " ({})".format(time)
+        fulltext = FA_BATTERY + " "
     elif state == "Full":
         fulltext = FA_PLUG + " "
     elif state == "Unknown":
