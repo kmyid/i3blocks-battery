@@ -51,6 +51,9 @@ else:
     elif state == "Unknown":
         fulltext = "<span font='FontAwesome'>\uf128</span> "
     else:
+        time = commasplitstatus[-1].split()[0]
+        time = ":".join(time.split(":")[0:2])
+        timeleft = " ({})".format(time)
         fulltext = FA_LIGHTNING + " " + FA_PLUG + " "
 
     def color(percent):
